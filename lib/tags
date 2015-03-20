@@ -1,0 +1,86 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.6	//
+AOBJ	Makefile	/^AOBJ = bios.o$/;"	m
+BIN	Makefile	/^BIN = libz.a$/;"	m
+COBJ	Makefile	/^COBJ = print.o string.o common.o dlmalloc.o fat.o$/;"	m
+Header	dlmalloc.c	/^typedef struct header Header;$/;"	t	typeref:struct:header	file:
+INCLUDE	Makefile	/^INCLUDE = -I..\/include$/;"	m
+LEFT	print.c	48;"	d	file:
+MINIMUM	dlmalloc.c	4;"	d	file:
+PLUS	print.c	46;"	d	file:
+SIGN	print.c	45;"	d	file:
+SMALL	print.c	49;"	d	file:
+SPACE	print.c	47;"	d	file:
+SPECIAL	print.c	50;"	d	file:
+ZEROPAD	print.c	44;"	d	file:
+__do_div	print.c	52;"	d	file:
+calloc	dlmalloc.c	/^void *calloc(size_t n, size_t size){$/;"	f
+checkkb	bios.s	/^checkkb:$/;"	l
+clustertosector	fat.c	/^int clustertosector(filesystem *fs,int32_t cluster)$/;"	f
+execvp	exec.c	/^int execvp(filesystem *fs,const char *file ,char * const argv []){$/;"	f
+fatFlush	fat.c	/^void fatFlush(filesystem * fs)$/;"	f
+free	dlmalloc.c	/^void free(void *ap)$/;"	f
+freep	dlmalloc.c	/^static Header* freep = NULL; \/* 空闲内存的链表 *\/$/;"	v	file:
+getClusNum	fat.c	/^int getClusNum(struct fat_dirent * dirent){$/;"	f
+getDirent	fat.c	/^struct fat_dirent * getDirent(filesystem * fs,int n){$/;"	f
+getFileName	fat.c	/^int getFileName(struct fat_slot * fatslot,char * fileName){$/;"	f
+getFileSize	fat.c	/^int getFileSize(struct fat_dirent * dirent){$/;"	f
+getSector	fat.c	/^void * getSector(filesystem *fs, int n){$/;"	f
+getc	bios.s	/^getc:$/;"	l
+gets	print.c	/^int gets(char * str){$/;"	f
+header	dlmalloc.c	/^struct header {$/;"	s	file:
+initFileSystem	fat.c	/^filesystem* initFileSystem(){$/;"	f
+inittty	bios.s	/^inittty:$/;"	l
+isdigit	common.c	/^int isdigit( int ch ){$/;"	f
+listFileStat	fat.c	/^int listFileStat(filesystem * fs,filestat * stat,int curSize){$/;"	f
+loop_sleep	common.c	/^void loop_sleep(){$/;"	f
+malloc	dlmalloc.c	/^void* malloc(unsigned n){$/;"	f
+malloc_init	dlmalloc.c	/^void malloc_init (ulong dest_addr){$/;"	f
+mem_malloc_brk	dlmalloc.c	/^static ulong mem_malloc_brk = 0;$/;"	v	file:
+mem_malloc_end	dlmalloc.c	/^static ulong mem_malloc_end = 0;$/;"	v	file:
+mem_malloc_start	dlmalloc.c	/^static ulong mem_malloc_start = 0;$/;"	v	file:
+memcpy	dlmalloc.c	/^void *memcpy(void *dst,const void *src,size_t num)  $/;"	f
+memset	dlmalloc.c	/^void memset (void *p, int c, size_t v)$/;"	f
+moremem	dlmalloc.c	/^Header* moremem (unsigned n) $/;"	f
+newline	bios.s	/^newline:$/;"	l
+next	dlmalloc.c	/^	struct header* next; \/* 指向下一个节点的指针 *\/$/;"	m	struct:header	typeref:struct:header::header	file:
+nextsector	fat.c	/^int  nextsector(filesystem * fs,int s)$/;"	f
+number	print.c	/^char *number(char *str, long num, int base, int size, int precision,$/;"	f
+pread	bios.s	/^pread:$/;"	l
+print	bios.s	/^print:$/;"	l
+printf	print.c	/^int printf(const char *fmt, ...)$/;"	f
+putc	bios.s	/^putc:$/;"	l
+putc1	bios.s	/^putc1:$/;"	l
+puts	print.c	/^void puts(char * str){$/;"	f
+read32	common.c	/^unsigned int read32(le32_t * _p)$/;"	f
+read8	common.c	/^unsigned char read8(le8_t * _p)$/;"	f
+sbrk	dlmalloc.c	/^void *sbrk (ptrdiff_t increment)$/;"	f
+size	dlmalloc.c	/^	unsigned size;$/;"	m	struct:header	file:
+skip_atoi	print.c	/^static int skip_atoi(const char **s)$/;"	f	file:
+sleep	common.c	/^void sleep(long sec){$/;"	f
+sprintf	print.c	/^int sprintf(char *buf, const char *fmt, ...)$/;"	f
+strcasecmp	string.c	/^int strcasecmp(const char *s1,const char *s2)  $/;"	f
+strcat	string.c	/^char *strcat(char *str1, char *str2)  $/;"	f
+strcpy	string.c	/^char *strcpy(char *dst,const char *src)  $/;"	f
+strlen	string.c	/^size_t strlen(const char * str){$/;"	f
+strncasecmp	string.c	/^int strncasecmp(const char *s1,const char *s2,int n){$/;"	f
+strncpy	string.c	/^char *strncpy ( char * dest, const char * source, int count )$/;"	f
+strnlen	string.c	/^size_t  strnlen (const char *str, size_t maxlen)  $/;"	f
+strstr	string.c	/^char* strstr(const char *s1, const char *s2)$/;"	f
+tolower	string.c	/^void tolower(char * str) $/;"	f
+tolowerchar	string.c	/^int tolowerchar(char c){$/;"	f
+topdir	Makefile	/^topdir = ..$/;"	m
+trim	string.c	/^void trim(char *sLine,int nLength){$/;"	f
+trimCrlf	string.c	/^void trimCrlf(char *sLine)$/;"	f
+trimLeft	string.c	/^void trimLeft(char *sLine, int nLength){$/;"	f
+trimQuotes	string.c	/^void trimQuotes(char *sLine, int nLength){$/;"	f
+trimRight	string.c	/^void trimRight(char *sLine, int nLength){$/;"	f
+vsprintf	print.c	/^int vsprintf(char *buf, const char *fmt, va_list args)$/;"	f
+write16	common.c	/^void write16(le16_t * _p, unsigned short _v)$/;"	f
+write32	common.c	/^void write32(le32_t * _p, uint32_t _v)$/;"	f
+write8	common.c	/^void write8(le8_t * _p, uint8_t _v)$/;"	f
+xpread	fat.c	/^int xpread( void *buf, int size,int sector)$/;"	f

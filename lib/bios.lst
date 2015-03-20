@@ -1,0 +1,137 @@
+GAS LISTING bios.s 			page 1
+
+
+   1              		.code16
+   2              	.globl inittty
+   3              	
+   4              	inittty:
+   5 0000 6650     		pushl	%eax
+   6 0002 B400     		movb    $0x00, %ah
+   7 0004 B013     		movb    $0x13, %al
+   8              	
+   9 0006 CD10     		int $0x10       /* May destroy %bp */
+  10 0008 6658     		popl	%eax
+  11 000a 66C3     		retl
+  12              		
+  13              	
+  14              	.globl  putc
+  15              	putc:
+  16 000c 6655     		pushl	%ebp
+  17 000e 6689E5   		movl	%esp,%ebp
+  18 0011 6650     		pushl	%eax
+  19 0013 6653     		pushl	%ebx
+  20              	
+  21 0015 67668B45 		movl    8(%ebp), %eax
+  21      08
+  22              	
+  23 001a 83F80A   		cmp		$0x0a,	%ax
+  24 001d 741B     		je		newline
+  25 001f 83F80D   		cmp     $0x0d,  %ax
+  26 0022 7416     		je      newline
+  27 0024 7508     		jne		print
+  28              	putc1:
+  29 0026 665B     		popl	%ebx
+  30 0028 6658     		popl	%eax
+  31 002a 665D     		popl	%ebp	
+  32 002c 66C3     		retl
+  33              	
+  34              	print:
+  35 002e B40E     		movb    $0x0e, %ah 
+  36 0030 8A3E6204 		movb    (0x462), %bh 
+  37 0034 B307     		movb    $0x07, %bl 
+  38 0036 CD10     		int $0x10       /* May destroy %bp */
+  39 0038 EBEC     		jmp putc1
+  40              	
+  41              	newline:
+  42 003a B403     		movb    $0x03, %ah 
+  43 003c 8A3E6204 		movb    (0x462), %bh 
+  44 0040 CD10     		int $0x10  
+  45              		
+  46 0042 B402     		movb    $0x02, %ah 
+  47 0044 8A3E6204 		movb    (0x462), %bh 
+  48 0048 80C601   		add		$0x1,	%dh
+  49 004b B200     		movb	$0x0,	%dl
+  50 004d CD10     		int $0x10  
+  51              		
+  52 004f EBD5     		jmp putc1
+  53              	
+  54              	
+  55              	.globl	getc
+  56              	
+GAS LISTING bios.s 			page 2
+
+
+  57              	getc:
+  58 0051 6655     		pushl 	%ebp
+  59 0053 6689E5   		movl	%esp,%ebp
+  60              	
+  61 0056 B410     		movb	$0x10,%ah
+  62 0058 CD16     		int	$0x16
+  63              	
+  64 005a 665D     		popl	%ebp
+  65 005c 66C3     		retl
+  66              	
+  67              	
+  68              	.globl checkkb
+  69              	
+  70              	checkkb:
+  71 005e 6655     		pushl 	%ebp
+  72 0060 6689E5   		movl	%esp,%ebp
+  73              	
+  74 0063 B412     		movb	$0x12,%ah
+  75 0065 CD16     		int	$0x16	
+  76              	
+  77 0067 665D     		popl	%ebp
+  78 0069 66C3     		retl
+  79              	
+  80              	.globl pread
+  81              	pread:
+  82 006b 6655     		pushl   %ebp
+  83 006d 6689E5   		movl    %esp,%ebp
+  84 0070 6650     		pushl	%eax
+  85 0072 6652     		pushl	%edx
+  86 0074 6651     		pushl	%ecx
+  87 0076 56       		push    %si
+  88              	
+  89 0077 67668B4D 		movl    12(%ebp), %ecx
+  89      0C
+  90              	
+  91 007c 666A00   		pushl	$0x0000
+  92 007f 6766FF75 		pushl	16(%ebp)
+  92      10
+  93 0084 6766FF75 		pushl	8(%ebp)
+  93      08
+  94 0089 51       		push	%cx
+  95 008a 6A10     		push	$0x0010
+  96              	
+  97 008c B280     		mov		$0x80,%dl
+  98 008e 89E6     		mov		%sp,%si
+  99 0090 B442     		movb 	$0x42,%ah
+ 100 0092 B000     		movb	$0x00,%al
+ 101 0094 CD13     		int	$0x13
+ 102              		
+ 103 0096 6683C410 		addl    $16, %esp	
+ 104 009a 5E       		pop	%si
+ 105 009b 6659     		popl	%ecx
+ 106 009d 665A     		popl	%edx
+ 107 009f 6658     		popl	%eax
+ 108 00a1 665D     		popl    %ebp
+ 109 00a3 66C3     		retl
+ 110              	
+GAS LISTING bios.s 			page 3
+
+
+GAS LISTING bios.s 			page 4
+
+
+DEFINED SYMBOLS
+              bios.s:4      .text:00000000 inittty
+              bios.s:15     .text:0000000c putc
+              bios.s:41     .text:0000003a newline
+              bios.s:34     .text:0000002e print
+              bios.s:28     .text:00000026 putc1
+              bios.s:57     .text:00000051 getc
+              bios.s:70     .text:0000005e checkkb
+              bios.s:81     .text:0000006b pread
+
+NO UNDEFINED SYMBOLS
